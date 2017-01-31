@@ -1,13 +1,16 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app/app.component';
+import { PomodoroTimerComponent } from './pomodoro-timer/pomodoro-timer';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PomodoroTimerComponent
   ],
   imports: [
     BrowserModule,
@@ -15,6 +18,6 @@ import { AppComponent } from './app/app.component';
     HttpModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, PomodoroTimerComponent]
 })
 export class AppModule { }
