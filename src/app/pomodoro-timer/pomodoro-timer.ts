@@ -2,11 +2,18 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'pomodoro-timer',
-    template: '<h1> {{ minutes }} : {{ seconds }} </h1>'
+    template: `
+        <h1> {{ minutes }} : {{ seconds }} </h1>
+        <p>
+            <button (click)="togglePause()"> {{ buttonLabel }} </button>
+        </p>
+    `
 })
 export class PomodoroTimerComponent {
     minutes: number;
     seconds: number;
+    isPaused: boolean;
+    buttonLabel: string;
 
     constructor() {
         this.resetPomodoro();
@@ -17,14 +24,27 @@ export class PomodoroTimerComponent {
     resetPomodoro() : void{
         this.minutes = 24;
         this.seconds = 59;
+        this.buttonLabel = 'Start';
+        this.togglePause();
     } // resetPomodoro
 
     tick() : void {
-        if (--this.seconds < 0) {
+        if (!this.isPaused){
+            this.buttonLabel = 'Pause';
+            
+            if (--this.seconds < 0) {
             this.seconds = 59;
             if (--this.minutes < 0) {
                 this.resetPomodoro();
             }
         }
+        }
     } // tick
+
+    togglePause() : void {
+        this.isPaused = !this.isPaused;
+        if (this.minutes < 24 || this.seconds < 59){
+            this.buttonLabel = this.isPaused ? 'Resume' : 'Pause';
+        }
+    }
 }
