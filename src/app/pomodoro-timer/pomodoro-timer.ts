@@ -3,10 +3,13 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'pomodoro-timer',
     template: `
-        <h1> {{ minutes }} : {{ seconds | number: '2.0' }} </h1>
-        <p>
-            <button (click)="togglePause()"> {{ buttonLabel }} </button>
-        </p>
+        <div class="text-center">
+            <img src="assets/img/pomodoro.png" alt="Pomodoro">
+            <h1> {{ minutes }} : {{ seconds | number: '2.0' }} </h1>
+            <p>
+                <button (click)="togglePause()"> {{ buttonLabel }} </button>
+            </p>
+        </div>
     `
 })
 export class PomodoroTimerComponent {
