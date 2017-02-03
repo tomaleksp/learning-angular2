@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, Output, EventEmitter } from '@angular/core'
 
 @Component({
     selector: 'countdown',
@@ -7,6 +7,10 @@ import { Component, Input } from '@angular/core'
 export class CountdownComponent{
     @Input() seconds: number; // from parent component
     intervalId: any; //number?
+    @Output()
+    complete: EventEmitter<any> = new EventEmitter();
+    @Output()
+    progress: EventEmitter<number> = new EventEmitter();
 
     constructor(){
         console.log(this.seconds);
@@ -16,6 +20,8 @@ export class CountdownComponent{
     private tick(): void {
         if(--this.seconds < 1){
             clearInterval(this.intervalId);
+            this.complete.emit(null); // emitted when finished countdown
         }
+        this.progress.emit(this.seconds);
     }
 }

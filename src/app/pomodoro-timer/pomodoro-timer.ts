@@ -11,7 +11,10 @@ import { Component } from '@angular/core';
             </p>
         </div>
         <div>
-            <countdown [seconds]="25">!!</countdown>
+            <countdown [seconds]="25" (complete)="onCountdownCompleted()" (progress)="timeout = $event"></countdown>
+        </div>
+        <div *ngIf="timeout < 10">
+            Beware! Only <strong> {{ timeout }} seconds </strong> left.
         </div>
     `
 })
@@ -20,6 +23,7 @@ export class PomodoroTimerComponent {
     seconds: number;
     isPaused: boolean;
     buttonLabel: string;
+    timeout: number;
 
     constructor() {
         this.resetPomodoro();
@@ -52,5 +56,9 @@ export class PomodoroTimerComponent {
         if (this.minutes < 24 || this.seconds < 59){
             this.buttonLabel = this.isPaused ? 'Resume' : 'Pause';
         }
+    }
+
+    onCountdownCompleted() : void{
+        alert('Time Up!');
     }
 }
