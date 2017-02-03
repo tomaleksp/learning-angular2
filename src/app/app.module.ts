@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app/app.component';
+//import { AppComponent } from './app/app.component';
 import { PomodoroTimerComponent } from './pomodoro-timer/pomodoro-timer';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    //AppComponent,
     PomodoroTimerComponent
   ],
   imports: [
@@ -18,6 +18,8 @@ import { PomodoroTimerComponent } from './pomodoro-timer/pomodoro-timer';
     HttpModule
   ],
   providers: [],
-  bootstrap: [AppComponent, PomodoroTimerComponent]
+  bootstrap: [
+    //AppComponent, 
+    PomodoroTimerComponent]
 })
 export class AppModule { }
