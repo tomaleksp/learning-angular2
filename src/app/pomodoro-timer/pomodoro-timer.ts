@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
                 <button class='btn btn-default' (click)="togglePause()"> {{ buttonLabel }} </button>
             </p>
         </div>
+        <div>
+            <countdown [seconds]="25">!!</countdown>
+        </div>
     `
 })
 export class PomodoroTimerComponent {
