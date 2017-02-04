@@ -1,8 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core'
+import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core'
 
 @Component({
     selector: 'countdown',
-    template: '<h1>Time left: {{ seconds }}</h1>'
+    template: '<h1>Time left: {{ seconds }}</h1>',
+    styles: ['h1 { color: #900 }'],
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class CountdownComponent{
     @Input() seconds: number; // from parent component
