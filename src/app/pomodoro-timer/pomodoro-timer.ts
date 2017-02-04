@@ -2,28 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'pomodoro-timer',
-    template: `
-        <div class="text-center">
-            <img src="assets/img/pomodoro.png" alt="Pomodoro">
-            <h1> {{ minutes }} : {{ seconds | number: '2.0' }} </h1>
-            <p>
-                <button class='btn btn-default' (click)="togglePause()"> {{ buttonLabel }} </button>
-            </p>
-        </div>
-        <div>
-            <countdown [seconds]="25" (complete)="onCountdownCompleted()" (progress)="timeout = $event"></countdown>
-        </div>
-        <div *ngIf="timeout < 10">
-            Beware! Only <strong> {{ timeout }} seconds </strong> left.
-        </div>
-    `
+    templateUrl: './pomodoro-tasks.html'
 })
 export class PomodoroTimerComponent {
     minutes: number;
     seconds: number;
     isPaused: boolean;
     buttonLabel: string;
-    timeout: number;
+    // timeout: number; // no longer required!
 
     constructor() {
         this.resetPomodoro();
