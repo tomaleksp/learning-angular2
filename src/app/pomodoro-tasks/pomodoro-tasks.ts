@@ -1,3 +1,4 @@
+import { Task } from './pomodoro-tasks';
 import {
     Component,
     Input,
@@ -9,7 +10,7 @@ import {
 } from '@angular/core';
 
 /// Modelinterface
-interface Task {
+export interface Task {
     name: string;
     deadline: Date;
     queued: boolean;
@@ -50,6 +51,27 @@ class TaskService {
     }
 }
 
+@Component({
+    selector: 'pomodoro-task-icons',
+    template: `<img *ngFor="let icon of icons"
+                src="/assets/img/pomodoro.png"
+                width="{{ size }}" title="{{ hint }}">`
+})
+export class TaskIconsComponent implements OnInit {
+    @Input() 
+    task: Task;
+    icons: Object[] = [];
+    @Input()
+    size : number;
+    @Input()
+    hint: string;
+
+    ngOnInit() {
+        this.icons.length = this.task.pomodorosRequired;
+        this.icons.fill({ name: this.task.name });
+    }
+}
+
 /// Component classes
 /// - Main Parent Component
 @Component({
@@ -74,17 +96,17 @@ export class TasksComponent {
         this.updateQueuedPomodoros();
     }
 
-    toggleTask(task: Task) : void{
+    toggleTask(task: Task): void {
         task.queued = !task.queued;
         this.updateQueuedPomodoros();
     }
 
-    updateQueuedPomodoros() : void {
-        this.queuedPomodoros = 
+    updateQueuedPomodoros(): void {
+        this.queuedPomodoros =
             this.tasks
-            .filter((task: Task) => task.queued)
-            .reduce((pomodoros: number, queuedTask: Task) => {
-                return pomodoros + queuedTask.pomodorosRequired;
-        },0);
+                .filter((task: Task) => task.queued)
+                .reduce((pomodoros: number, queuedTask: Task) => {
+                    return pomodoros + queuedTask.pomodorosRequired;
+                }, 0);
     }
 };
