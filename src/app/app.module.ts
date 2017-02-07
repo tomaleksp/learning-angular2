@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 //import { AppComponent } from './app/app.component';
 import { CountdownComponent } from './countdown/countdown';
 import { PomodoroTimerComponent } from './pomodoro-timer/pomodoro-timer';
-import { TasksComponent, TaskIconsComponent } from './pomodoro-tasks/pomodoro-tasks'
+import { TasksComponent, TaskIconsComponent, FormattedTimePipe } from './pomodoro-tasks/pomodoro-tasks'
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { TasksComponent, TaskIconsComponent } from './pomodoro-tasks/pomodoro-ta
     CountdownComponent,
     PomodoroTimerComponent,
     TaskIconsComponent,
-    TasksComponent
+    TasksComponent,
+    FormattedTimePipe
   ],
   imports: [
     BrowserModule,

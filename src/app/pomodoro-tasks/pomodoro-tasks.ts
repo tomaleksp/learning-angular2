@@ -17,6 +17,17 @@ export interface Task {
     pomodorosRequired: number;
 }
 
+@Pipe({
+    name: 'pomodoroFormattedTime'
+})
+export class FormattedTimePipe implements PipeTransform {
+    transform(totalMinutes: number): string {
+        let minutes = totalMinutes % 60;
+        let hours = Math.floor(totalMinutes / 60);
+        return `${hours}h:${minutes}m`;
+    }
+}
+
 /// Local Data Service
 class TaskService {
     public taskStore: Array<Task> = [];
