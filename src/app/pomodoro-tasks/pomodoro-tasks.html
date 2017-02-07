@@ -9,7 +9,7 @@
                 </span>
             </h3>
             <p>
-                <span *ngFor="let queuedTask of tasks">
+                <span *ngFor="let queuedTask of tasks | pomodoroQueuedOnly:true">
                     <pomodoro-task-icons
                         [task]="queuedTask"
                         size="30"
