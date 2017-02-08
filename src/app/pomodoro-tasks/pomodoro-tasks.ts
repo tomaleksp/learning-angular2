@@ -17,6 +17,36 @@ export interface Task {
     pomodorosRequired: number;
 }
 
+@Directive({
+    selector: '[task]'
+})
+export class TaskTooltipDirective{
+    private defaultTooltipText: string = "";
+
+    @Input()
+    task: Task;
+    @Input()
+    taskTooltip: any;
+
+    @HostListener('mouseover')
+    onMouseOver(){
+        console.log("OnMouseOver: " + this.task.name);
+        console.log(this.taskTooltip);
+        if(!this.defaultTooltipText && this.taskTooltip){
+            this.defaultTooltipText = this.taskTooltip.innerHTML;
+            this.taskTooltip.innerHTML = this.task.name;
+        }
+    }
+
+    @HostListener('mouseout')
+    onMoustOut(){
+        if(this.taskTooltip){
+            this.taskTooltip.innerHTML = this.defaultTooltipText;
+            this.defaultTooltipText = "";
+        }
+    }
+}
+
 @Pipe({
     name: 'pomodoroFormattedTime'
 })
