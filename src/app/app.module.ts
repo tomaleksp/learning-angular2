@@ -6,9 +6,8 @@ import { HttpModule } from '@angular/http';
 //import { AppComponent } from './app/app.component';
 import { CountdownComponent } from './countdown/countdown';
 import { TimerWidgetComponent } from './timer/timer'
-import { FormattedTimePipe, QueuedOnlyPipe } from './shared/shared'
-import { TasksComponent, TaskIconsComponent, 
-         TaskTooltipDirective } from './pomodoro-tasks/pomodoro-tasks'
+import { FormattedTimePipe, QueuedOnlyPipe, SHARED_PROVIDERS } from './shared/shared'
+import { TasksComponent, TaskIconsComponent, TaskTooltipDirective } from './tasks/tasks'
 
 @NgModule({
   declarations: [
@@ -26,7 +25,9 @@ import { TasksComponent, TaskIconsComponent,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    SHARED_PROVIDERS
+  ],
   bootstrap: [
     TasksComponent
   ]
