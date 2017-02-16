@@ -46,4 +46,8 @@ export default class TaskService {
                 error => console.log(error)
             );
     }
+
+    addTask(task: Task){
+        this.taskObserver.next(task);
+    }
 }
