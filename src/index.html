@@ -13,13 +13,29 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-default navbar-static-top">
+  <!--<nav class="navbar navbar-default navbar-static-top">
     <div class="container">
       <div class="navbar-header">
         <strong class="navbar-brand">My Pomodoro Tasks</strong>
       </div>
     </div>
+  </nav>-->
+
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <strong class="navbar-brand">My Pomodoro App</strong>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a [routerLink]="['TasksComponent']">Tasks</a></li>
+        <li><a [routerLink]="['TimerComponent']">Timer</a></li>
+        <li>
+          <a [routerLink]="['TaskEditorComponent']">Publish Task</a>
+        </li>
+      </ul>
+    </div>
   </nav>
+
   <pomodoro-tasks>Loading Tasks...</pomodoro-tasks>
   <pomodoro-timer-widget></pomodoro-timer-widget>
 
